@@ -1,0 +1,48 @@
+<div class="w-[95%] flex flex-col gap-6">
+  <p class="text-3xl font-semibold">About Me.</p>
+  <p class="inter-intro">
+    A Full Stack Developer and community builder with expertise in JavaScript, Java, Node.Js, Angular, React,
+    and
+    cloud
+    technologies.
+
+    Beyond my technical skills, I'm passionate about sharing knowledge and creating resources for developers.
+    With
+    a background in Engineering, I've dedicated over 1 year to developing web applications and fostering
+    communities where learning and growth are at the forefront.
+  </p>
+  <p class="text-2xl font-medium">My Tech Stack</p>
+  <div>
+    <div class="flex flex-col md:flex-row gap-2 items-stretch">
+      <div class="flex flex-col gap-4 flex-1">
+        @for (tech of techStackFirst; track tech.id) {
+          <div
+            class="rounded-2xl min-h-[150px]     border border-gray-500 flex flex-row gap-4 p-4 flex-1">
+            <div>
+              <img [src]=tech.logo alt="" width="50" class="rounded-full">
+            </div>
+            <div class="flex-1">
+              <p class=" text-lg font-medium">{{ tech.name }}</p>
+              <p class="text-sm">{{ tech.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+
+      <div class="flex flex-col gap-4 flex-1">
+        @for (tech of testStackSecond; track tech.id) {
+          <div
+            class="rounded-2xl min-h-[150px]     border border-gray-500 flex flex-row gap-4 p-4 flex-1">
+            <div>
+              <img [src]=tech.logo alt="" width="50" class="rounded-full">
+            </div>
+            <div class="flex-1">
+              <p class=" text-lg font-medium">{{ tech.name }}</p>
+              <p class="text-sm">{{ tech.description }}</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

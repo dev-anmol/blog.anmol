@@ -1,0 +1,66 @@
+import {Component, signal, WritableSignal} from '@angular/core';
+import {CommonModule, NgClass, NgOptimizedImage} from '@angular/common'
+import {Router, RouterLink} from '@angular/router';
+import {Subject, Subscription} from 'rxjs';
+import {NavigateService} from '../../services/navigation/navigate.service';
+import {content} from '../../models/content';
+import {ThemeService} from '../../services/themeToggle/theme.service';
+import {theme} from '../../models/theme';
+
+@Component({
+  selector: 'app-header',
+  imports: [NgOptimizedImage, RouterLink, CommonModule],
+  templateUrl: './header.component.html',
+  styleUrl: './header.component.css'
+})
+export class HeaderComponent {
+  logoPath: WritableSignal<string> = signal('assets/logo.webp');
+  hamburger: WritableSignal<string> = signal('assets/hamburger.svg');
+
+  toggleMenu: WritableSignal<boolean> = signal(false);
+  darkMode: WritableSignal<boolean> = signal(true);
+  isSelected: WritableSignal<boolean> = signal(false);
+  themeType: WritableSignal<theme> = signal('dark');
+  private subscription!:Subscription;
+
+
+
+  constructor(private router: Router, private navigateToSection: NavigateService, private theme: ThemeService){
+    this.subscription = this.theme.themeListener$.subscribe((value: theme) => {
+      this.themeType.set(value)
+    })
+  }
+
+
+  navigateToHome(){
+    console.log("called");
+    this.router.navigate(['/']);
+  }
+
+  updateToggleMenu(){
+    console.log("Called");
+    this.toggleMenu.update(prev => !prev);
+  }
+
+  toggleButtons(){
+    this.darkMode.update(prev => !prev);
+  }
+
+  toggleIsMenuSelected(){
+    this.isSelected.update(prev => !prev);
+  }
+
+  updateNavigation(value:content){
+      console.log("called");
+      this.navigateToSection.setCategory(value);
+      this.toggleMenu.set(false);
+      this.isSelected.set(false);
+  }
+
+  updateTheme(theme: theme){
+    console.log(theme);
+    this.themeType.update((prev) => prev = theme);
+    this.theme.setTheme(this.themeType());
+  }
+
+}

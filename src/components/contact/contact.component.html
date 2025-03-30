@@ -1,0 +1,50 @@
+<div class="w-[100%]">
+  <div>
+    <p class="text-3xl font-semibold pl-2">Contact.</p>
+  </div>
+  <div class="w-full sm:min-w-[740px] md:min-w-[740px] flex flex-col px-4 mx-auto">
+    <div class="bg-[#06090F] text-gray-300 rounded-xl mt-4 p-4">
+      <p class="text-2xl text-center">Enter your details</p>
+
+      <div class="flex items-center justify-between gap-6 p-4"></div>
+
+      <div class="flex justify-center items-center gap-2 p-2">
+        <p class="text-gray-500 border-b min-w-[100px]"></p>
+        <p class="text-xs text-gray-500">Or</p>
+        <p class="text-gray-500 border-b min-w-[100px]"></p>
+      </div>
+
+      <form action="" [formGroup]="signUpForm">
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-col md:flex-row pt-3 gap-4">
+            <div class="flex flex-col gap-1 w-full md:w-[47%]">
+              <label for="name" class="text-xs text-gray-400 tracking-wide font-bold">Name</label>
+              <input formControlName="name" type="text" id="name" placeholder="Enter Name"
+                     class="bg-[#464660] rounded-md focus:outline-none placeholder:text-xs text-gray-100 caret-[1px] text-xs p-2 w-full">
+            </div>
+            <div class="flex flex-col gap-1 w-full md:w-[47%]">
+              <label for="Email" class="text-xs text-gray-400 tracking-wide font-bold">Email</label>
+              <input formControlName="email" type="text" id="Email" placeholder="Enter email address"
+                     class="bg-[#464660] rounded-md focus:outline-none placeholder:text-xs text-gray-100 caret-[1px] text-xs p-2 w-full">
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <label for="message" class="text-xs text-gray-400 tracking-wide font-bold">Message</label>
+            <input formControlName="message" id="message" type="text"
+                   class="rounded-md bg-[#464660] focus:outline-none placeholder:text-xs text-gray-100 caret-[1px] text-xs p-2 w-full"
+                   placeholder="Enter your message">
+          </div>
+
+          <div>
+            <button class="cursor-pointer bg-[#4636BE] w-full rounded-md p-2 text-xs font-bold" type="submit">
+              Send Message
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+

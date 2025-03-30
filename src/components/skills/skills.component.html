@@ -1,0 +1,73 @@
+<div class="w-[95%] flex flex-col gap-6">
+  <p class="text-3xl font-semibold">Skills</p>
+
+  <div class="flex md:flex-row flex-col items-center justify-between gap-8 md:gap-6">
+
+    <!-- Working Skills Section -->
+    <div class="md:w-[50%] w-full flex flex-col gap-4 min-h-[300px]">
+      <p class="text-xl font-medium">Working Skills</p>
+      <div class="flex flex-col gap-4 mt-2 flex-1">
+        <div>
+          <div class="flex justify-between">
+            <p class="text-sm">FrontEnd</p>
+            <p class="text-sm">95%</p>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#374151]">
+            <div class="h-2 w-[95%] rounded-full bg-red-400"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between">
+            <p class="text-sm">BackEnd</p>
+            <p class="text-sm">90%</p>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#374151]">
+            <div class="h-2 w-[90%] rounded-full bg-[#4ade80]"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between">
+            <p class="text-sm">Database</p>
+            <p class="text-sm">85%</p>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#374151]">
+            <div class="h-2 w-[85%] rounded-full bg-[#22d3ee]"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between">
+            <p class="text-sm">Devops</p>
+            <p class="text-sm">70%</p>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#374151]">
+            <div class="h-2 w-[70%] rounded-full bg-[#facc15]"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex justify-between">
+            <p class="text-sm">Mobile</p>
+            <p class="text-sm">75%</p>
+          </div>
+          <div class="w-full h-2 rounded-full bg-[#374151]">
+            <div class="h-2 w-[75%] rounded-full bg-[#818CF8]"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Knowledge Section -->
+    <div class="md:w-[50%] flex flex-col min-h-[300px] gap-7 ">
+      <p class="text-xl font-medium">Knowledge</p>
+      <div class="flex flex-wrap gap-2 flex-1">
+        @for (tech of knowledges; track knowledges.indexOf(tech)) {
+          <p class="max-h-[40px] text-center p-2 rounded-lg bg-[#ebeff8] cursor-pointer text-[#4479e2]">{{ tech }}</p>
+        }
+      </div>
+    </div>
+
+  </div>
+</div>

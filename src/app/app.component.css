@@ -1,0 +1,15 @@
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.wrapper {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.inter-intro {
+          font-family: "Inter", sans-serif;
+          font-optical-sizing: auto;
+          font-weight: bold;
+          font-style: normal;
+        }
