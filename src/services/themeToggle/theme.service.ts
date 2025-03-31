@@ -10,7 +10,6 @@ export class ThemeService {
   themeListener$ = this.theme.asObservable();
 
   setTheme(theme: theme) {
-    console.log("Called theme service")
     this.theme.next(theme);
   }
 }

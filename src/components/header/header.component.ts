@@ -1,4 +1,4 @@
-import {Component, signal, WritableSignal} from '@angular/core';
+import {Component, HostListener, signal, WritableSignal} from '@angular/core';
 import {CommonModule, NgClass, NgOptimizedImage} from '@angular/common'
 import {Router, RouterLink} from '@angular/router';
 import {Subject, Subscription} from 'rxjs';
@@ -33,12 +33,12 @@ export class HeaderComponent {
 
 
   navigateToHome(){
-    console.log("called");
+    //("called");
     this.router.navigate(['/']);
   }
 
   updateToggleMenu(){
-    console.log("Called");
+    //("Called");
     this.toggleMenu.update(prev => !prev);
   }
 
@@ -51,16 +51,25 @@ export class HeaderComponent {
   }
 
   updateNavigation(value:content){
-      console.log("called");
+      //("called");
       this.navigateToSection.setCategory(value);
       this.toggleMenu.set(false);
       this.isSelected.set(false);
   }
 
   updateTheme(theme: theme){
-    console.log(theme);
+    //(theme);
     this.themeType.update((prev) => prev = theme);
     this.theme.setTheme(this.themeType());
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    const menuElement = document.querySelector('.menu-container');
+    if (menuElement && !menuElement.contains(target) && this.toggleMenu()) {
+      this.toggleMenu.set(false);
+    }
   }
 
 }
