@@ -8,12 +8,12 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class ProjectCardComponent implements OnInit{
   @Input() id !: number;
-  @Input() url !:string;
-  @Input() dateVal !: string;
-  @Input() topic !: string;
+  @Input() imgUrl !:string;
+  @Input() title !: string;
   @Input() description !: string;
+  @Input() projectUrl !: string;
 
   ngOnInit() {
-    console.log(this.id, this.url, this.dateVal, this.topic, this.description);
+    console.log(this.id, this.imgUrl, this.title, this.description);
   }
 }

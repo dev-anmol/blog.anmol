@@ -1,7 +1,8 @@
 export type projectsFormat = {
   id: number,
-  img: string,
-  dateVal: string,
-  topic: string,
-  description: string
+  imgUrl: string,
+  title: string,
+  description: string,
+  techStack: string,
+  projectUrl: string
 }
