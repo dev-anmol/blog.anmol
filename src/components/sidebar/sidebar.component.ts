@@ -13,7 +13,7 @@ export class SidebarComponent {
 
   constructor(private router: Router) {
   }
-  menus: WritableSignal<string[]> = signal(['Getting Started', 'Blogs']);
+  menus: WritableSignal<string[]> = signal(['Getting Started', 'Blogs', 'Snippets']);
   submenu: WritableSignal<Record<string, string[]>> = signal({
     'Getting Started': ['Introduction', 'What\'s New'],
     'Blogs': ['Posts', 'Trending']

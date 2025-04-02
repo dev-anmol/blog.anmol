@@ -1,5 +1,5 @@
 import {Component, HostListener, signal, WritableSignal} from '@angular/core';
-import {CommonModule, NgClass, NgOptimizedImage} from '@angular/common'
+import {CommonModule, NgClass, NgOptimizedImage, ViewportScroller} from '@angular/common'
 import {Router, RouterLink} from '@angular/router';
 import {Subject, Subscription} from 'rxjs';
 import {NavigateService} from '../../services/navigation/navigate.service';
@@ -25,7 +25,7 @@ export class HeaderComponent {
 
 
 
-  constructor(private router: Router, private navigateToSection: NavigateService, private theme: ThemeService){
+  constructor(private viewportScroller: ViewportScroller,private router: Router, private navigateToSection: NavigateService, private theme: ThemeService){
     this.subscription = this.theme.themeListener$.subscribe((value: theme) => {
       this.themeType.set(value)
     })
@@ -70,6 +70,10 @@ export class HeaderComponent {
     if (menuElement && !menuElement.contains(target) && this.toggleMenu()) {
       this.toggleMenu.set(false);
     }
+  }
+
+  scrollToSection(id: string){
+    this.viewportScroller.scrollToAnchor(id);
   }
 
 }
