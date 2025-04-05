@@ -15,15 +15,15 @@ export class ResumeComponent {
     year: '2019-2023',
     courseName: 'Bachelors of Technology - Btech, Computer Science',
     institute: 'Government PG College Dharamshala'
-  },{
+  }, {
     id: 2,
-    year: '2015-2016',
-    courseName: 'High School, X, CBSE',
-    institute: 'Kendriya Vidyalaya'
-  },{
-    id: 3,
     year: '2017-2019',
     courseName: 'High School, XII, Non-Medical, CBSE',
+    institute: 'Kendriya Vidyalaya'
+  }, {
+    id: 3,
+    year: '2015-2016',
+    courseName: 'High School, X, CBSE',
     institute: 'Kendriya Vidyalaya'
   }]
 
