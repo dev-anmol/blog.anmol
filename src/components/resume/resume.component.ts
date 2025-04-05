@@ -29,7 +29,7 @@ export class ResumeComponent {
 
   experience: experienceFormat[] = [{
     id: 1,
-    year: '2024 - Present',
+    year: 'May 2024 - Present',
     position: 'Software Developer',
     companyName: 'RightWatts Solutions Pvt Ltd'
   }, {
