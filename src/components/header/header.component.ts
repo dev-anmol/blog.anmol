@@ -21,43 +21,45 @@ export class HeaderComponent {
   darkMode: WritableSignal<boolean> = signal(true);
   isSelected: WritableSignal<boolean> = signal(false);
   themeType: WritableSignal<theme> = signal('dark');
-  private subscription!:Subscription;
+  private subscription!: Subscription;
 
 
-
-  constructor(private viewportScroller: ViewportScroller,private router: Router, private navigateToSection: NavigateService, private theme: ThemeService){
+  constructor(private viewportScroller: ViewportScroller, private router: Router, private navigateToSection: NavigateService, private theme: ThemeService) {
     this.subscription = this.theme.themeListener$.subscribe((value: theme) => {
       this.themeType.set(value)
     })
   }
 
 
-  navigateToHome(){
+  navigateToHome() {
     //("called");
     this.router.navigate(['/']);
   }
 
-  updateToggleMenu(){
+  updateToggleMenu() {
     //("Called");
     this.toggleMenu.update(prev => !prev);
   }
 
-  toggleButtons(){
+  toggleButtons() {
     this.darkMode.update(prev => !prev);
   }
 
-  toggleIsMenuSelected(){
+  toggleIsMenuSelected() {
     this.isSelected.update(prev => !prev);
   }
 
-  updateNavigation(value:content){
-      //("called");
-      this.navigateToSection.setCategory(value);
-      this.toggleMenu.set(false);
-      this.isSelected.set(false);
+  updateNavigation(value: content, sectionId: string) {
+    this.navigateToSection.setCategory(value);
+    this.toggleMenu.set(false);
+    this.isSelected.set(false);
+
+    setTimeout(() => {
+      this.scrollToSection(sectionId);
+    }, 100);
   }
 
-  updateTheme(theme: theme){
+  updateTheme(theme: theme) {
     this.themeType.update((prev) => prev = theme);
     this.theme.setTheme(this.themeType());
   }
@@ -71,7 +73,7 @@ export class HeaderComponent {
     }
   }
 
-  scrollToSection(id: string){
+  scrollToSection(id: string) {
     this.viewportScroller.scrollToAnchor(id);
   }
 

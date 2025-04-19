@@ -26,38 +26,36 @@
             }
           </button>
         </div>
-        <button (click)="updateNavigation('Home'); scrollToSection('home')"
+        <button (click)="updateNavigation('Home', 'home'); scrollToSection('home')"
                 class="text-sm py-3 px-4 w-full hover:bg-gray-100 hover:text-gray-900 text-start pl-8"
                 [ngClass]="themeType() === 'dark' ? 'text-white bg-gray-900' : 'text-black'">
           Home
         </button>
 
-          <button (click)="updateNavigation('Skills'); scrollToSection('skills')"
+          <button (click)="updateNavigation('Skills', 'skills'); scrollToSection('skills')"
                   class="text-sm py-3 px-4 w-full hover:bg-gray-100 hover:text-gray-900 text-start pl-8"
                   [ngClass]="themeType() === 'dark' ? 'text-white bg-gray-900' : 'text-black'">
             Skills
           </button>
 
-          <button (click)="updateNavigation('Resume'); scrollToSection('resume')"
+          <button (click)="updateNavigation('Resume', 'resume'); scrollToSection('resume')"
                   class="text-sm py-3 px-4 w-full hover:bg-gray-100 hover:text-gray-900 text-start pl-8"
                   [ngClass]="themeType() === 'dark' ? 'text-white bg-gray-900' : 'text-black'">
             Resume
           </button>
 
-          <button (click)="updateNavigation('Projects'); scrollToSection('projects')"
+          <button (click)="updateNavigation('Projects', 'projects'); scrollToSection('projects')"
                   class="text-sm py-3 px-4 w-full hover:bg-gray-100 hover:text-gray-900 text-start pl-8"
                   [ngClass]="themeType() === 'dark' ? 'text-white bg-gray-900' : 'text-black'">
             Projects
           </button>
 
 
-          <button (click)="updateNavigation('Contact'); scrollToSection('contact')"
+          <button (click)="updateNavigation('Contact', 'contact'); scrollToSection('contact')"
                   class="text-sm py-3 px-4 w-full hover:bg-gray-100 hover:text-gray-900 rounded-b-lg text-start pl-8"
                   [ngClass]="themeType() === 'dark' ? 'text-white bg-gray-900' : 'text-black'">
             Contact
           </button>
-
-
       </div>
     }
   </div>
