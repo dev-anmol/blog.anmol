@@ -58,7 +58,6 @@ export class HeaderComponent {
   }
 
   updateTheme(theme: theme){
-    //(theme);
     this.themeType.update((prev) => prev = theme);
     this.theme.setTheme(this.themeType());
   }
