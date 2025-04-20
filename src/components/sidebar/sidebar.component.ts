@@ -15,8 +15,8 @@ export class SidebarComponent {
   }
   menus: WritableSignal<string[]> = signal(['Getting Started', 'Blogs', 'Snippets']);
   submenu: WritableSignal<Record<string, string[]>> = signal({
-    'Getting Started': ['Introduction', 'What\'s New'],
-    'Blogs': ['Posts', 'Trending']
+    'Getting Started': ['Introduction'],
+    'Blogs': ['blogs']
   });
 
   menuToggle: WritableSignal<Record<string, boolean>> = signal(

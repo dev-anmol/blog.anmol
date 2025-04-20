@@ -1,11 +1,12 @@
-<div class="wrapper overflow-x-hidden transition-colors duration-500" [ngClass]="themeType() === 'dark' ? 'bg-black text-white' : 'bg-white text-black'">
-<app-header></app-header>
-<div class="flex" >
-  <app-sidebar></app-sidebar>
-  <div class="ml-0 mt-10 p-4 min-h-full w-full">
-    <router-outlet></router-outlet>
+<div class="wrapper overflow-x-hidden transition-colors duration-500 h-screen"
+     [ngClass]="themeType() === 'dark' ? 'bg-black text-white' : 'bg-white text-black'">
+  <app-header></app-header>
+  <div class="flex">
+    <app-sidebar></app-sidebar>
+    <div class="ml-0 mt-10 p-4 min-h-full w-full">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
-<app-footer></app-footer>
+  <app-footer></app-footer>
 </div>
 
