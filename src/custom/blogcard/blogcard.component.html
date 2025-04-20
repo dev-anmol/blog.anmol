@@ -1,0 +1,29 @@
+<div class="border-none max-w-sm rounded-lg overflow-hidden transition-all duration-300 hover:translate-y-[-4px]">
+  <div class="relative h-48 overflow-hidden p-3">
+    <div class="absolute inset-0 bg-gradient-to-t from-black/5 to-transparent z-10"></div>
+    <img
+      [src]="blog.image"
+      alt="blog-image"
+      class="w-full h-full object-cover transition-transform duration-500 hover:scale-105 rounded-lg"
+      style="image-rendering: smooth; transform: translateZ(0);"
+    >
+  </div>
+
+  <!-- Content section with proper padding -->
+
+  <div class="p-5">
+    <!-- Title and visit button -->
+    <div class="flex justify-between items-center mb-3">
+      <h3 class="text-lg font-semibold truncate" [ngClass]="themeType() === 'dark' ? 'text-white/90' : 'text-gray-800' ">{{blog.title}}</h3>
+      <a
+        [href]="blog.image"
+        target="_blank"
+        class="text-sm px-4 py-2 bg-[#ebeff8] text-[#4479e2] rounded-md hover:bg-blue-300 hover:text-white transition-colors duration-200 font-medium shadow-sm"
+      >
+        Visit
+      </a>
+    </div>
+    <!-- Description -->
+    <p class=" text-sm line-clamp-3" [ngClass]="themeType() === 'dark' ? 'text-white/90' : 'text-gray-600' ">{{blog.description}}</p>
+  </div>
+</div>

@@ -1,24 +1,32 @@
-import {Component, inject, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {AsyncPipe} from '@angular/common';
+import {Component, inject, OnDestroy, OnInit, signal, WritableSignal} from '@angular/core';
+import {Subscription} from 'rxjs';
+import {BlogsService} from '../../services/blogs/blogs.service';
+import {BlogcardComponent} from '../../custom/blogcard/blogcard.component';
+import {blogs} from '../../models/blogs';
 
 @Component({
   selector: 'app-blogs',
   standalone: true,
   imports: [
-    AsyncPipe
+    BlogcardComponent
   ],
   templateUrl: './blogs.component.html',
   styleUrl: './blogs.component.css'
 })
 
-export class BlogsComponent implements OnInit{
+export class BlogsComponent implements OnInit, OnDestroy {
 
-  private http = inject(HttpClient);
-  res$!: Observable<any[]>;
+  private blogService = inject(BlogsService);
+  myBlogs: WritableSignal<blogs[]> = signal<blogs[]>([]);
+  private subscription !: Subscription;
+
   ngOnInit() {
-    this.res$ = this.http.get<any[]>('http://localhost:5000/blogs');
-    let result = this.res$.subscribe(data => console.log(data));
+    this.subscription = this.blogService.getAllBlogs().subscribe(data => {
+      this.myBlogs.set(data);
+    })
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

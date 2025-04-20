@@ -12,17 +12,16 @@ import {NgClass} from '@angular/common';
   templateUrl: './projectcard.component.html',
   styleUrl: './projectcard.component.css'
 })
-export class ProjectCardComponent implements OnInit{
+export class ProjectCardComponent implements OnInit {
   @Input() id !: number;
-  @Input() imgUrl !:string;
+  @Input() imgUrl !: string;
   @Input() title !: string;
   @Input() description !: string;
   @Input() projectUrl !: string;
   themeType: WritableSignal<theme> = signal('dark');
-  private subscription!:Subscription;
 
   constructor(private theme: ThemeService) {
-    this.subscription = this.theme.themeListener$.subscribe((value: theme) => {
+    this.theme.themeListener$.subscribe((value: theme) => {
       this.themeType.set(value);
     })
   }

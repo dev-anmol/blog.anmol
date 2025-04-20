@@ -6,7 +6,7 @@
     </div>
     <div class="hamburger-container w-[35px] h-[35px] flex justify-center items-center" (click)="toggleIsMenuSelected()"
          [ngClass]="isSelected() || themeType() === 'dark' ? 'selected' : 'unselected'">
-      <img [ngSrc]=hamburger() alt="hamburger-icon" [width]="30" [height]="30" (click)="updateToggleMenu()">
+      <img [ngSrc]=hamburger() alt="hamburger-icon" [width]="30" [height]="30" (click)="updateToggleMenu()" priority>
     </div>
     @if (toggleMenu()) {
       <div class="absolute top-[60px] right-4 transform z-[50] rounded-lg shadow-lg menu-container w-[200px]" [ngClass]="themeType() !== 'dark' ? 'bg-white' : 'bg-gray-900'">
