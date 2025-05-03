@@ -1,5 +1,5 @@
-import { Component, signal, WritableSignal, effect } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {Component, signal, WritableSignal, effect} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {Router, RouterLink} from '@angular/router';
 
 @Component({
@@ -13,17 +13,19 @@ export class SidebarComponent {
 
   constructor(private router: Router) {
   }
+
   menus: WritableSignal<string[]> = signal(['Getting Started', 'Blogs', 'Snippets']);
   submenu: WritableSignal<Record<string, string[]>> = signal({
     'Getting Started': ['Introduction'],
-    'Blogs': ['blogs']
+    'Blogs': ['blogs', 'create']
   });
 
   menuToggle: WritableSignal<Record<string, boolean>> = signal(
     Object.fromEntries(
       Object.keys({
-        'Getting Started': ['Introduction', 'What\'s New'],
-        'Blogs': ['Latest Posts', 'Trending']
+        'Getting Started': [],
+        'Blogs': [],
+        'Snippets': []
       }).map(menu => [menu, true])
     )
   );
@@ -53,7 +55,7 @@ export class SidebarComponent {
     return this.selectedSubmenu() === sub;
   }
 
-  navigateToPosts(menu:string, sub:string){
+  navigateToPosts(menu: string, sub: string) {
     this.router.navigate([`${sub}`]);
   }
 }

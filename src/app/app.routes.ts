@@ -7,6 +7,9 @@ export const routes: Routes = [{
   path:'blogs',
   loadComponent: ()=> import('../components/blogs/blogs.component').then(m => m.BlogsComponent)
 },{
+  path: 'create',
+  loadComponent: () => import('../components/create-blog/create-blog.component').then(m => m.CreateBlogComponent)
+},{
   path: '**',
   loadComponent: ()=> import('../components/intro/intro.component').then(m => m.IntroComponent)
 }];
