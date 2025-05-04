@@ -1,40 +1,40 @@
 <section class="flex items-center justify-center">
-  <form class="flex flex-col items-center w-[90%] gap-3 bg-[#262627] p-6 rounded-2xl">
+  <form (ngSubmit)="submit()" class="flex flex-col items-center w-[90%] gap-3 bg-[#262627] p-6 rounded-2xl">
 
     <!-- Title -->
     <div class="w-full flex flex-col items-center gap-1">
       <p class="text-sm w-[70%]">Blog's Title</p>
-      <input name="title" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Title of your blog">
+      <input (input)="setTitle($event)" name="title" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Title of your blog">
     </div>
 
     <!-- Description -->
     <div class="w-full flex flex-col items-center gap-1">
       <p class="w-[70%] text-sm">Description</p>
-      <input name="description" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Description of your blog">
+      <input (input)="setDescription($event)" t name="description" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Description of your blog">
     </div>
 
     <!-- Content -->
     <div class="w-full flex flex-col items-center gap-1">
       <p class="w-[70%] text-sm">Content</p>
-      <textarea name="content" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" rows="5" placeholder="Content of your blog"></textarea>
+      <textarea (input)="setContent($event)" name="content" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" rows="5" placeholder="Content of your blog"></textarea>
     </div>
 
     <!-- Image -->
     <div class="w-full flex flex-col items-center gap-1">
       <p class="text-sm w-[70%]">Image</p>
-      <input name="image" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Image's Path">
+      <input (input)="setImagePath($event)" name="image" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Image's Path">
     </div>
 
     <!-- Category -->
     <div class="w-full flex flex-col items-center gap-1">
       <p class="text-sm w-[70%]">Category</p>
-      <input name="category" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Category">
+      <input (input)="setCategory($event)" name="category" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Category">
     </div>
 
     <!-- Author -->
     <div class="w-full flex flex-col items-center gap-1">
       <p class="text-sm w-[70%]">Author</p>
-      <input name="author" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Author's Name">
+      <input (input)="setAuthor($event)" name="author" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Author's Name">
     </div>
 
     <!-- Tags -->
@@ -52,6 +52,7 @@
           [closeOnSelect]="false"
           appendTo="body"
           class="blog-tags-select text-sm bg-[#1B1B1B] p-2 rounded-lg text-gray-400"
+          (change)="updateTags()"
         >
           <!-- Selected Tag Template -->
           <ng-template ng-tag-tmp let-item="item" let-clear="clear">
