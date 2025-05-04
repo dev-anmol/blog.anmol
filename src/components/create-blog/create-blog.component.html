@@ -37,6 +37,40 @@
       <input name="author" class="w-[70%] focus:outline-none text-white/90 text-sm p-2 bg-[#1B1B1B] rounded-lg" type="text" placeholder="Author's Name">
     </div>
 
+    <!-- Tags -->
+    <div class="w-full flex flex-col items-center gap-1">
+      <p class="text-sm w-[70%]">Tags</p>
+      <div class="w-[70%] custom-ng-select-container">
+        <ng-select
+          [items]="availableTags"
+          [multiple]="true"
+          [addTag]="addTagFn"
+          bindLabel="name"
+          [(ngModel)]="selectedTags"
+          name="tags"
+          placeholder="Select or type to add tags"
+          [closeOnSelect]="false"
+          appendTo="body"
+          class="blog-tags-select text-sm bg-[#1B1B1B] p-2 rounded-lg text-gray-400"
+        >
+          <!-- Selected Tag Template -->
+          <ng-template ng-tag-tmp let-item="item" let-clear="clear">
+            <div class="tag-item">
+              {{ item.name }}
+              <span (click)="clear(item)" class="tag-remove">×</span>
+            </div>
+          </ng-template>
+
+          <!-- Dropdown Option Template -->
+          <ng-template ng-option-tmp let-item="item">
+            <div class="option-item">
+              {{ item.name }}
+            </div>
+          </ng-template>
+        </ng-select>
+      </div>
+    </div>
+
     <!-- Submit Button -->
     <div class="w-[70%]">
       <button type="submit" class="text-sm bg-[#3E34D3] hover:bg-[#2E2BB3] transition-colors duration-400 w-full p-1 rounded-lg">Create Blog</button>

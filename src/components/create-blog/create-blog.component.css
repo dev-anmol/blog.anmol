@@ -1,0 +1,94 @@
+.blog-tags-select.ng-select .ng-select-container {
+  background-color: #1B1B1B !important;
+  border: none !important;
+  color: white !important;
+  min-height: 38px !important;
+  border-radius: 0.5rem !important;
+}
+
+.blog-tags-select.ng-select .ng-value-container {
+  padding: 0.5rem !important;
+}
+
+.blog-tags-select.ng-select .ng-dropdown-panel {
+  background-color: #1B1B1B !important;
+  border: 1px solid #333 !important;
+  color: white !important;
+  border-radius: 0.5rem !important;
+  margin-top: 4px !important;
+  z-index: 100 !important;
+}
+
+.blog-tags-select.ng-select .ng-dropdown-panel .ng-dropdown-panel-items {
+  padding: 4px !important;
+  max-height: 240px !important;
+}
+
+.blog-tags-select.ng-select .ng-placeholder {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.blog-tags-select.ng-select .ng-clear-wrapper {
+  color: white !important;
+}
+
+.blog-tags-select.ng-select .ng-input > input {
+  color: white !important;
+}
+
+.blog-tags-select.ng-select.ng-select-focused .ng-select-container {
+  box-shadow: 0 0 0 1px #3E34D3 !important;
+}
+
+.blog-tags-select.ng-select .ng-dropdown-panel .ng-option {
+  background-color: #1B1B1B !important;
+  color: white !important;
+}
+
+.blog-tags-select.ng-select .ng-dropdown-panel .ng-option:hover {
+  background-color: #333 !important;
+}
+
+.blog-tags-select.ng-select .ng-dropdown-panel .ng-option.ng-option-selected {
+  background-color: #3E34D3 !important;
+}
+
+.blog-tags-select.ng-select .ng-value {
+  background-color: #3E34D3 !important;
+  color: white !important;
+  border-radius: 0.375rem !important;
+  padding: 0.25rem 0.5rem !important;
+  margin: 0.125rem !important;
+}
+
+/* Custom tag styling */
+.tag-item {
+  background-color: #3E34D3;
+  color: white;
+  font-size: 0.875rem;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.tag-remove {
+  cursor: pointer;
+  margin-left: 0.25rem;
+}
+
+.option-item {
+  color: white;
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  cursor: pointer;
+}
+
+/* Fix the overlap with submit button */
+.custom-ng-select-container {
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 20;
+}
