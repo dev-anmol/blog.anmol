@@ -18,9 +18,5 @@ export class CreateBlogComponent {
 
 
 
-  createBlog() {
-    return this.http.post('http://localhost:5000/blogs/create', {
 
-    })
-  }
 }
