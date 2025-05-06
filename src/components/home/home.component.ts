@@ -1,10 +1,15 @@
-import {Component} from '@angular/core';
+import {Component, signal} from '@angular/core';
 import {techFormat} from '../../models/techFormat';
-import {Subject} from 'rxjs';
+import {Subject, Subscription} from 'rxjs';
+import {ThemeService} from '../../services/themeToggle/theme.service';
+import {theme} from '../../models/theme';
+import {NgClass} from '@angular/common';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [
+    NgClass
+  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -62,5 +67,13 @@ export class HomeComponent {
     name: "Azure",
     description: "Cloud computing service for building, testing, deploying, and managing applications.",
   }
-  ]
+  ];
+  themeType = signal('dark');
+  private subscription !: Subscription;
+
+  constructor(private theme : ThemeService ) {
+    this.subscription = this.theme.themeListener$.subscribe((value: theme) => {
+      this.themeType.set(value);
+    })
+  }
 }
