@@ -1,8 +1,7 @@
 import {Component, inject, signal} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 import {NgSelectModule} from '@ng-select/ng-select';
-import {AsyncPipe, CommonModule, JsonPipe} from '@angular/common';
 import {FormsModule} from '@angular/forms';
+import {CreateBlogService} from '../../services/createBlog/create-blog.service';
 
 @Component({
   selector: 'app-create-blog',
@@ -11,7 +10,8 @@ import {FormsModule} from '@angular/forms';
   styleUrl: './create-blog.component.css'
 })
 export class CreateBlogComponent {
-  private http = inject(HttpClient);
+
+  private createBlog = inject(CreateBlogService);
   title = signal('');
   description = signal('');
   content = signal('');
@@ -19,6 +19,7 @@ export class CreateBlogComponent {
   category = signal('');
   author = signal('');
   tags = signal([]);
+  dataOfPublish = signal('');
 
   availableTags = [
     {name: 'Tech'},
@@ -70,6 +71,7 @@ export class CreateBlogComponent {
   }
 
   submit() {
+    console.log("here")
     const blogData = {
       title: this.title(),
       description: this.description(),
@@ -77,10 +79,10 @@ export class CreateBlogComponent {
       image: this.image(),
       category: this.category(),
       author: this.author(),
-      tags: this.tags() // Use the tags signal for submission
+      tags: this.tags(),
+      dataOfPublish : new Date()
     };
-
-    console.log(blogData);
+    this.createBlog.createBlog(blogData);
   }
 
 

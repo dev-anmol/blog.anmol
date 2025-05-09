@@ -1,5 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {blogs} from '../../models/blogs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,17 @@ import {HttpClient} from '@angular/common/http';
 export class CreateBlogService {
   private http = inject(HttpClient);
 
-  createBlog() {
-    return this.http.post('http://localhost:5000/blogs/create', {})
+  public token = sessionStorage.getItem('token') || '';
+  public headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+
+  createBlog(blogData: blogs) {
+    return this.http.post('http://localhost:5000/blogs/create', {
+      data: blogData,
+    },{
+      headers : this.headers
+    }).subscribe({
+      next: data => console.log(data),
+      error: err => console.log(err)
+    })
   }
 }

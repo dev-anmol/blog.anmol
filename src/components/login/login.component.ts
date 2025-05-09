@@ -5,6 +5,11 @@ import {Router} from '@angular/router';
 import {ToastModule} from 'primeng/toast';
 import {MessageService} from 'primeng/api';
 
+type loginRes = {
+  token: string,
+  isAuthorized: string
+}
+
 @Component({
   selector: 'app-login',
   imports: [
@@ -32,29 +37,40 @@ export class LoginComponent {
   }
 
   login() {
-    this.loginService.loginAdmin(this.username(), this.password()).subscribe(
-      {
-        next: data => {
-          if (Object.values(data).includes('authorized')) {
-            this.messageService.add({
-              severity: 'success',
-              summary: 'Successfully LoggedIn',
-              detail: 'lets create blogs:)',
-              life: 3000
-            })
-            setTimeout(() => {
-              this.router.navigate(['/create-blog']);
-            }, 500);
-          }
-        },
-        error: err => {
+    this.loginService.loginAdmin(this.username(), this.password()).subscribe({
+      next: (data: loginRes) => {
+        console.log(data);
+        sessionStorage.setItem('token', data.token);
+
+        if (data.isAuthorized === 'authorized') {
+          this.messageService.add({
+            severity: 'success',
+            summary: 'Successfully LoggedIn',
+            detail: 'lets create blogs :)',
+            life: 3000
+          });
+
+          setTimeout(() => {
+            this.router.navigate(['/create-blog']);
+          }, 500);
+        } else {
           this.messageService.add({
             severity: 'error',
-            summary: 'Authentication Failed',
-            detail: 'Username or password is incorrect',
-            life: 3000,
+            summary: 'Unauthorized',
+            detail: 'You are not authorized to access this route',
+            life: 3000
           });
         }
-      });
+      },
+      error: err => {
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Authentication Failed',
+          detail: 'Username or password is incorrect',
+          life: 3000
+        });
+      }
+    });
   }
+
 }
