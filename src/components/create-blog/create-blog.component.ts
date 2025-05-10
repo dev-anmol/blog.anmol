@@ -80,7 +80,7 @@ export class CreateBlogComponent {
       category: this.category(),
       author: this.author(),
       tags: this.tags(),
-      dataOfPublish : new Date()
+      dataOfPublish : new Date(),
     };
     this.createBlog.createBlog(blogData);
   }

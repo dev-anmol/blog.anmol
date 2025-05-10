@@ -1,3 +1,12 @@
-@for (blog of this.myBlogs(); track blog.id) {
-  <app-blogcard [blog]="blog"></app-blogcard>
+@if (isLoading) {
+  <div class="flex flex-col items-center justify-center py-10 pt-10">
+    <div class="animate-spin rounded-full h-6 w-6 border-t-4 border-blue-500 border-solid border-r-transparent"></div>
+    <p class="mt-2 text-white text-xs">Loading...</p>
+  </div>
+} @else {
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+    @for (blog of this.myBlogs(); track blog.id) {
+      <app-blogcard [blog]="blog"></app-blogcard>
+    }
+  </div>
 }

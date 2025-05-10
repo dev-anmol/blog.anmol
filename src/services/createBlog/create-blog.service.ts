@@ -11,7 +11,7 @@ export class CreateBlogService {
   public token = sessionStorage.getItem('token') || '';
   public headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
 
-  createBlog(blogData: blogs) {
+  createBlog(blogData: any) {
     return this.http.post('http://localhost:5000/blogs/create', {
       data: blogData,
     },{

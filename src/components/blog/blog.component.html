@@ -1,1 +1,28 @@
-<p>blog works!</p>
+<div class="max-w-3xl mx-auto p-5">
+  <!-- Blog Title -->
+  <h1 class="text-3xl font-bold mb-4" [ngClass]="themeType() === 'dark' ? 'text-white' : 'text-gray-900'">
+    {{ blog?.title }}
+  </h1>
+
+  <!-- Author & Date -->
+  <div class="flex items-center text-sm text-gray-500 mb-6">
+    <span *ngIf="blog?.author" class="mr-2">By {{ blog?.author }}</span>
+    <span *ngIf="blog?.dateOfPublish">• {{ blog?.dateOfPublish | date: 'longDate' }}</span>
+  </div>
+
+  <!-- Blog Image -->
+  <img
+    *ngIf="blog?.image"
+    [src]="blog?.image"
+    alt="Blog Image"
+    class="w-full rounded-md shadow mb-6"
+  />
+
+  <!-- Description (if needed) -->
+  <p class="text-lg text-gray-600 mb-4" *ngIf="blog?.description">
+    {{ blog?.description }}
+  </p>
+
+  <!-- Full Content -->
+  <div class="prose prose-lg max-w-none" [innerText]="blog?.content"></div>
+</div>

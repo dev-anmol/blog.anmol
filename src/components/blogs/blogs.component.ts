@@ -19,9 +19,11 @@ export class BlogsComponent implements OnInit, OnDestroy {
   private blogService = inject(BlogsService);
   myBlogs: WritableSignal<blogs[]> = signal<blogs[]>([]);
   private subscription !: Subscription;
+  isLoading: boolean = true;
 
   ngOnInit() {
     this.subscription = this.blogService.getAllBlogs().subscribe(data => {
+      this.isLoading = false;
       this.myBlogs.set(data);
     })
   }

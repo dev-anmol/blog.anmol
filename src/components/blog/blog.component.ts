@@ -1,19 +1,24 @@
-import {Component, inject, OnInit} from '@angular/core';
+import {Component, inject, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {BlogsService} from '../../services/blogs/blogs.service';
+import {CommonModule} from '@angular/common';
+import {blogs} from '../../models/blogs';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-blog',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.css'
 })
 
-export class BlogComponent implements OnInit {
+export class BlogComponent implements OnInit, OnDestroy {
 
   private route = inject(ActivatedRoute);
   private blogService = inject(BlogsService);
+  private subscription !: Subscription;
   blogId !: string;
+  blog: blogs | null = null;
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
@@ -26,10 +31,14 @@ export class BlogComponent implements OnInit {
   }
 
   getBlogById(id: string) {
-    const res = this.blogService.getBlogById(id);
-    res.subscribe(data => console.log(data));
+    this.subscription = this.blogService.getBlogById(id).subscribe((data: blogs) => this.blog = data);
   }
 
-  constructor() {
+  themeType(): string {
+    return localStorage.getItem('theme') || 'light';
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }
