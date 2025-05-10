@@ -1,7 +1,6 @@
-import {Component, Input, OnInit, signal, WritableSignal} from '@angular/core';
+import {Component, Input, signal, WritableSignal} from '@angular/core';
 import {theme} from '../../models/theme';
 import {ThemeService} from '../../services/themeToggle/theme.service';
-import {Subscription} from 'rxjs';
 import {NgClass} from '@angular/common';
 
 @Component({
@@ -12,7 +11,7 @@ import {NgClass} from '@angular/common';
   templateUrl: './projectcard.component.html',
   styleUrl: './projectcard.component.css'
 })
-export class ProjectCardComponent implements OnInit {
+export class ProjectCardComponent {
   @Input() id !: number;
   @Input() imgUrl !: string;
   @Input() title !: string;
@@ -26,7 +25,4 @@ export class ProjectCardComponent implements OnInit {
     })
   }
 
-  ngOnInit() {
-    console.log(this.id, this.imgUrl, this.title, this.description);
-  }
 }

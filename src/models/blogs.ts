@@ -1,6 +1,6 @@
 export type blogs = {
-  id?: number,
-  title?: string,
+  id?: string,
+  title: string,
   description?: string,
   content?: string,
   image?: string,

@@ -12,4 +12,8 @@ export class BlogsService {
   getAllBlogs() {
     return this.http.get<blogs[]>('http://localhost:5000/blogs');
   }
+
+  getBlogById(blogId : string) {
+    return this.http.get<blogs>(`http://localhost:5000/blogs/${blogId}`);
+  }
 }

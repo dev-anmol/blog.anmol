@@ -28,11 +28,10 @@ export class HeaderComponent {
     this.subscription = this.theme.themeListener$.subscribe((value: theme) => {
       this.themeType.set(value)
     })
-  }
+}
 
 
   navigateToHome() {
-    //("called");
     this.router.navigate(['/']);
   }
 
