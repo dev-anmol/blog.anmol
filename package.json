@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^20.0.5",
     "@angular/common": "^20.0.5",
     "@angular/compiler": "^20.0.5",
     "@angular/core": "^20.0.5",
@@ -21,6 +22,7 @@
     "@primeng/themes": "^19.1.2",
     "@tailwindcss/postcss": "^4.0.14",
     "gsap": "^3.12.7",
+    "locomotive-scroll": "^5.0.0-beta.21",
     "postcss": "^8.5.3",
     "primeng": "^19.1.2",
     "rxjs": "~7.8.0",

@@ -52,7 +52,7 @@ export class IntroComponent implements OnDestroy, AfterViewInit, OnInit {
       gsap.registerPlugin(ScrollTrigger);
       // gsap.registerPlugin(SplitText);
       const timeline1 = gsap.timeline();
-      timeline1.from([this.introRef.nativeElement, '.logo', '.second', '.content', '.image','.designation'], { opacity: 0, duration: 1, filter: 'blur(10px)', stagger: 0.03 });
+      timeline1.from([this.introRef.nativeElement, '.logo', '.second', '.content', '.image','.designation','.designation', '.image','.github', '.linkedin', '.x', '.insta'], { opacity: 0, duration: 1, filter: 'blur(10px)', stagger: 0.03 });
     });
   }
 

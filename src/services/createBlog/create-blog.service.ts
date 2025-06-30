@@ -16,9 +16,6 @@ export class CreateBlogService {
       data: blogData,
     },{
       headers : this.headers
-    }).subscribe({
-      next: data => console.log(data),
-      error: err => console.log(err)
     })
   }
 }

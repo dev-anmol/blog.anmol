@@ -32,5 +32,12 @@ export class ProjectsComponent {
     description: 'A sleek, interactive portfolio crafted with Next.js and enriched with Shadcn UI components for a polished, accessible interface. Framer Motion animations bring the experience to life with subtle, engaging transitions between sections. The Magic UI elements add distinctive visual flair while maintaining performance. This responsive showcase effectively highlights projects and skills through a thoughtfully designed user journey.',
     techStack: 'NextJS, TailwindCSS, Shadcn, MagicUI',
     projectUrl: 'https://portfolio-puce-three-89.vercel.app/'
+  }, {
+    id: 4,
+    imgUrl: 'assets/crypto.png',
+    title: 'Crypto & Stock Monitoring Dashboard',
+    description: 'A responsive and visually engaging dashboard built with Next.js for tracking cryptocurrencies and stocks in real-time. It features smooth Framer Motion transitions, a clean Shadcn UI layout, and intuitive navigation. Users can access reliable data, gain market insights, and make informed decisions—all in one place.',
+    techStack: 'NextJS, TailwindCSS, Framer Motion, TypeScript',
+    projectUrl: 'https://crypto-dashboard-ten-ecru.vercel.app/'
   }]
 }

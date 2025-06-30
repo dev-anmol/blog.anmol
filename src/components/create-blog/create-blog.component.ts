@@ -2,16 +2,21 @@ import {Component, inject, signal} from '@angular/core';
 import {NgSelectModule} from '@ng-select/ng-select';
 import {FormsModule} from '@angular/forms';
 import {CreateBlogService} from '../../services/createBlog/create-blog.service';
+import {MessageService} from 'primeng/api';
+import {ToastModule} from 'primeng/toast';
+
 
 @Component({
   selector: 'app-create-blog',
-  imports: [NgSelectModule, FormsModule],
+  imports: [NgSelectModule, FormsModule, ToastModule],
   templateUrl: './create-blog.component.html',
-  styleUrl: './create-blog.component.css'
+  styleUrl: './create-blog.component.css',
+  providers: [MessageService]
 })
 export class CreateBlogComponent {
 
   private createBlog = inject(CreateBlogService);
+  private messageService = inject(MessageService);
   title = signal('');
   description = signal('');
   content = signal('');
@@ -80,10 +85,26 @@ export class CreateBlogComponent {
       category: this.category(),
       author: this.author(),
       tags: this.tags(),
-      dataOfPublish : new Date(),
+      dataOfPublish: new Date(),
     };
-    this.createBlog.createBlog(blogData);
+    this.createBlog.createBlog(blogData).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Successfully Created',
+          life: 3000
+        })
+
+      },
+      error: (error) => {
+        console.log(error);
+        this.messageService.add({
+          severity: 'error',
+          summary: 'Error while creating',
+          life: 3000
+        })
+      }
+    });
   }
-
-
 }

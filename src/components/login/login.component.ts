@@ -39,7 +39,6 @@ export class LoginComponent {
   login() {
     this.loginService.loginAdmin(this.username(), this.password()).subscribe({
       next: (data: loginRes) => {
-        console.log(data);
         sessionStorage.setItem('token', data.token);
 
         if (data.isAuthorized === 'authorized') {

@@ -15,16 +15,16 @@
       <p class="text-center inter-intro font-[500] px-6 py-2 rounded-lg mt-2 designation">Full stack
         developer</p>
       <div class="flex gap-2 mt-7">
-        <a href="https://github.com/dev-anmol" class="p-2 rounded-lg">
+        <a href="https://github.com/dev-anmol" class="p-2 rounded-lg github">
           <img src="assets/github-mark.png" alt="Github" width="25" class="rounded-full cursor-pointer bg-white   ">
         </a>
-        <a href="https://linkedin.com/in/anmol-thakur-4875191b7/" class="p-2 rounded-lg">
+        <a href="https://linkedin.com/in/anmol-thakur-4875191b7/" class="p-2 rounded-lg linkedin">
           <img src="assets/linkedin.png" width="25" class="rounded-full cursor-pointer" alt="Linkedin">
         </a>
-        <a href="https://x.com/anmo1ll" class="p-2 rounded-lg">
+        <a href="https://x.com/anmo1ll" class="p-2 rounded-lg x">
           <img src="assets/twitter.png" width="25" class="rounded-full cursor-pointer bg-white" alt="Twitter">
         </a>
-        <a href="https://instagram.com/a.nmolll" class="p-2 rounded-lg">
+        <a href="https://instagram.com/a.nmolll" class="p-2 rounded-lg insta">
           <img src="assets/ig.png" width="25" class="rounded-full cursor-pointer" alt="Instagram">
         </a>
       </div>
@@ -55,37 +55,36 @@
     <div class="md:w-[80%] md:mt-0 mt-10 flex flex-col gap-10 items-center p-4 rounded-lg overflow-x-hidden">
       <div class="w-full md:flex md:justify-end gap-5 items-center justify-center p-2 hidden md:block content">
         <button [ngClass]="contentType() === 'Home' ? 'selected' : null" (click)="updateContent('Home')"
-                class="hover:text-[#4479e2] hover:bg-[#ebeff8] transition-colors duration-500 px-5 py-2 rounded-lg font-[500] cursor-pointer">Home
+          class="hover:text-[#4479e2] hover:bg-[#ebeff8] transition-colors duration-500 px-5 py-2 rounded-lg font-[500] cursor-pointer">Home
         </button>
         <button [ngClass]="contentType() === 'Resume' ? 'selected ' : null" (click)="updateContent('Resume')"
-                class="hover:text-[#4479e2] hover:bg-[#ebeff8] transition-colors duration-500 px-5 py-2 rounded-lg font-[500] cursor-pointer">Resume
+          class="hover:text-[#4479e2] hover:bg-[#ebeff8] transition-colors duration-500 px-5 py-2 rounded-lg font-[500] cursor-pointer">Resume
         </button>
         <button [ngClass]="contentType() === 'Skills' ? 'selected ': null" (click)="updateContent('Skills')"
-                class="hover:text-[#4479e2] hover:bg-[#ebeff8] transition-colors duration-500 px-5 py-2 rounded-lg font-[500] cursor-pointer">Skills
+          class="hover:text-[#4479e2] hover:bg-[#ebeff8] transition-colors duration-500 px-5 py-2 rounded-lg font-[500] cursor-pointer">Skills
         </button>
         <button [ngClass]="contentType() === 'Projects' ? 'selected ' : null" (click)="updateContent('Projects')"
-                class="hover:text-[#4479e2] hover:bg-[#ebeff8] transition-colors duration-500 px-5 py-2 rounded-lg font-[500] cursor-pointer">Projects
+          class="hover:text-[#4479e2] hover:bg-[#ebeff8] transition-colors duration-500 px-5 py-2 rounded-lg font-[500] cursor-pointer">Projects
         </button>
         <button [ngClass]="contentType() === 'Contact' ? 'selected ' : null" (click)="updateContent('Contact')"
-                class="hover:text-[#4479e2] hover:bg-[#ebeff8] transition-colors duration-500 px-5 py-2 rounded-lg font-[500] cursor-pointer">Contact
+          class="hover:text-[#4479e2] hover:bg-[#ebeff8] transition-colors duration-500 px-5 py-2 rounded-lg font-[500] cursor-pointer">Contact
         </button>
       </div>
 
       <!--      content here -->
       <div class="w-full">
-      @if (contentType() === "Home") {
+        @if (contentType() === "Home") {
         <app-home></app-home>
-      } @else if (contentType() === "Resume") {
+        } @else if (contentType() === "Resume") {
         <app-resume></app-resume>
-      } @else if (contentType() === "Projects") {
+        } @else if (contentType() === "Projects") {
         <app-projects></app-projects>
-      } @else if (contentType() === "Skills") {
+        } @else if (contentType() === "Skills") {
         <app-skills></app-skills>
-      } @else {
+        } @else {
         <app-contact></app-contact>
-      }
+        }
       </div>
     </div>
   </div>
 </div>
-
