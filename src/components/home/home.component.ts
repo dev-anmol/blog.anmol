@@ -99,10 +99,10 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
       const timeline1 = gsap.timeline();
       const timeline2 = gsap.timeline({
         scrollTrigger: {
-          markers: true,
+          // markers: true,
           scrub: true,
           trigger: '.skill',
-          start: 'top 80%',
+          start: 'top 70%',
           end: '+=400px',
         }
       });
