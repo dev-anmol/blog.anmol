@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, signal, ViewChild } from '@angular/core';
-import { techFormat } from '../../models/techFormat';
-import { Subject, Subscription } from 'rxjs';
-import { ThemeService } from '../../services/themeToggle/theme.service';
-import { theme } from '../../models/theme';
 import { NgClass } from '@angular/common';
+import { AfterViewInit, Component, ElementRef, OnDestroy, signal, ViewChild } from '@angular/core';
 import gsap, { ScrollTrigger } from 'gsap/all';
+import { Subscription } from 'rxjs';
+import { techFormat } from '../../models/techFormat';
+import { theme } from '../../models/theme';
+import { ThemeService } from '../../services/themeToggle/theme.service';
 
 @Component({
   selector: 'app-home',
@@ -97,26 +97,11 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.context = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger);
       const timeline1 = gsap.timeline();
-      const timeline2 = gsap.timeline({
-        scrollTrigger: {
-          // markers: true,
-          scrub: true,
-          trigger: '.skill',
-          start: 'top 70%',
-          end: '+=400px',
-        }
-      });
-      timeline1.from([this.desRef.nativeElement, '.contentType'], {
+      timeline1.from([this.desRef.nativeElement, '.contentType', '#home'], {
         opacity: 0,
-        duration: 1,
+        duration:0.5,
         filter: 'blur(10px)',
       });
-
-      timeline2.from('.skill', {
-        opacity: 0,
-        duration: 1,
-        filter: 'blur(5px)',
-      })
 
     });
   }

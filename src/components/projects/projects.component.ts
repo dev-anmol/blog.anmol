@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
+import {AfterViewInit, Component} from '@angular/core';
 import {projectsFormat} from '../../models/projects';
 import {ProjectCardComponent} from '../../custom/projectcard/projectcard.component';
+import gsap, { ScrollTrigger } from 'gsap/all';
 
 @Component({
   selector: 'app-projects',
@@ -10,7 +11,11 @@ import {ProjectCardComponent} from '../../custom/projectcard/projectcard.compone
   templateUrl: './projects.component.html',
   styleUrl: './projects.component.css'
 })
-export class ProjectsComponent {
+export class ProjectsComponent implements AfterViewInit {
+
+  private context !: any;
+  
+  
   projects: projectsFormat[] = [{
     id: 1,
     imgUrl: 'assets/scaneats.png',
@@ -40,4 +45,17 @@ export class ProjectsComponent {
     techStack: 'NextJS, TailwindCSS, Framer Motion, TypeScript',
     projectUrl: 'https://crypto-dashboard-ten-ecru.vercel.app/'
   }]
+
+
+  ngAfterViewInit(): void {
+    this.context = gsap.context(() => {
+      gsap.registerPlugin(ScrollTrigger);
+      const timeline = gsap.timeline();
+      timeline.from('#projects', {
+        opacity: 0,
+        duration: 0.5,
+        filter: 'blur(10px)',
+      })
+    })
+  }
 }
