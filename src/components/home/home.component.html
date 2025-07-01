@@ -12,7 +12,7 @@
     communities where learning and growth are at the forefront.
   </p>
   <p class="text-2xl font-medium">My Tech Stack</p>
-  <div>
+  <div class="skill">
     <div class="flex flex-col md:flex-row gap-4 items-stretch">
       <div class="flex flex-col gap-4 flex-1">
         @for (tech of techStackFirst; track tech.id) {
@@ -22,7 +22,7 @@
             <div>
               <img [src]=tech.logo alt="" width="50" class="rounded-full shadow-md">
             </div>
-            <div class="flex-1">
+            <div class="flex-1" data-scroll data-scroll-speed="1">
               <p
                 class="text-lg font-medium transition-colors duration-300">{{ tech.name }}</p>
               <p class="text-sm">{{ tech.description }}</p>

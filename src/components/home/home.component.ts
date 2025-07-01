@@ -96,12 +96,28 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit(): void {
     this.context = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger);
-      const timeline = gsap.timeline();
-      timeline.from([this.desRef.nativeElement, '.contentType'], {
+      const timeline1 = gsap.timeline();
+      const timeline2 = gsap.timeline({
+        scrollTrigger: {
+          markers: true,
+          scrub: true,
+          trigger: '.skill',
+          start: 'top 80%',
+          end: '+=400px',
+        }
+      });
+      timeline1.from([this.desRef.nativeElement, '.contentType'], {
         opacity: 0,
         duration: 1,
         filter: 'blur(10px)',
       });
+
+      timeline2.from('.skill', {
+        opacity: 0,
+        duration: 1,
+        filter: 'blur(5px)',
+      })
+
     });
   }
 
