@@ -97,7 +97,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     this.context = gsap.context(() => {
       gsap.registerPlugin(ScrollTrigger);
       const timeline1 = gsap.timeline();
-      timeline1.from([this.desRef.nativeElement, '.contentType', '#home'], {
+      timeline1.from([this.desRef.nativeElement, '.contentType', '.subheading'], {
         opacity: 0,
         duration:0.5,
         filter: 'blur(10px)',

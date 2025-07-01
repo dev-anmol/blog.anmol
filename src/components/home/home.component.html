@@ -11,40 +11,36 @@
     a background in Engineering, I've dedicated over 1 year to developing web applications and fostering
     communities where learning and growth are at the forefront.
   </p>
-  <p class="text-2xl font-medium">My Tech Stack</p>
+  <p class="text-2xl font-medium subheading">My Tech Stack</p>
   <div class="skill">
     <div class="flex flex-col md:flex-row gap-4 items-stretch">
       <div class="flex flex-col gap-4 flex-1">
         @for (tech of techStackFirst; track tech.id) {
-          <div
-            [ngClass]="themeType() === 'light' ? 'hover:bg-[#ebeff8]' : 'hover:bg-[#1B1B1B]'"
-            class="transition-all duration-300 rounded-2xl min-h-[150px] border border-gray-600/40 hover:border-indigo-500/70 shadow-sm hover:shadow-md hover:shadow-indigo-500/10 flex flex-row gap-4 p-5 flex-1 group backdrop-blur-sm">
-            <div>
-              <img [src]=tech.logo alt="" width="50" class="rounded-full shadow-md">
-            </div>
-            <div class="flex-1" data-scroll data-scroll-speed="1">
-              <p
-                class="text-lg font-medium transition-colors duration-300">{{ tech.name }}</p>
-              <p class="text-sm">{{ tech.description }}</p>
-            </div>
+        <div [ngClass]="themeType() === 'light' ? 'hover:bg-[#ebeff8]' : 'hover:bg-[#1B1B1B]'"
+          class="transition-all duration-300 rounded-2xl min-h-[150px] border border-gray-600/40 hover:border-indigo-500/70 shadow-sm hover:shadow-md hover:shadow-indigo-500/10 flex flex-row gap-4 p-5 flex-1 group backdrop-blur-sm">
+          <div>
+            <img [src]=tech.logo alt="" width="50" class="rounded-full shadow-md">
           </div>
+          <div class="flex-1" data-scroll data-scroll-speed="1">
+            <p class="text-lg font-medium transition-colors duration-300">{{ tech.name }}</p>
+            <p class="text-sm">{{ tech.description }}</p>
+          </div>
+        </div>
         }
       </div>
 
       <div class="flex flex-col gap-4 flex-1">
         @for (tech of testStackSecond; track tech.id) {
-          <div
-            [ngClass]="themeType() === 'light' ? 'hover:bg-[#ebeff8]' : 'hover:bg-[#1B1B1B]'"
-            class="transition-all duration-300 rounded-2xl min-h-[150px] border border-gray-600/40 hover:border-indigo-500/70 shadow-sm hover:shadow-md hover:shadow-indigo-500/10 flex flex-row gap-4 p-5 flex-1 group backdrop-blur-sm">
-            <div>
-              <img [src]=tech.logo alt="" width="50" class="rounded-full shadow-md">
-            </div>
-            <div class="flex-1">
-              <p
-                class="text-lg font-medium transition-colors duration-300">{{ tech.name }}</p>
-              <p class="text-sm">{{ tech.description }}</p>
-            </div>
+        <div [ngClass]="themeType() === 'light' ? 'hover:bg-[#ebeff8]' : 'hover:bg-[#1B1B1B]'"
+          class="transition-all duration-300 rounded-2xl min-h-[150px] border border-gray-600/40 hover:border-indigo-500/70 shadow-sm hover:shadow-md hover:shadow-indigo-500/10 flex flex-row gap-4 p-5 flex-1 group backdrop-blur-sm">
+          <div>
+            <img [src]=tech.logo alt="" width="50" class="rounded-full shadow-md">
           </div>
+          <div class="flex-1">
+            <p class="text-lg font-medium transition-colors duration-300">{{ tech.name }}</p>
+            <p class="text-sm">{{ tech.description }}</p>
+          </div>
+        </div>
         }
       </div>
     </div>
