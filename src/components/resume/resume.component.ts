@@ -1,8 +1,7 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
-import {educationFormat} from '../../models/education';
-import {experienceFormat} from '../../models/experience';
+import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import gsap from 'gsap/all';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { educationFormat } from '../../models/education';
+import { experienceFormat } from '../../models/experience';
 
 @Component({
   selector: 'app-resume',
@@ -51,7 +50,6 @@ export class ResumeComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.context = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
       const timeline = gsap.timeline();
       timeline.from([this.educationRef.nativeElement], {
         opacity: 0,

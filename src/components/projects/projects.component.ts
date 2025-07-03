@@ -1,7 +1,7 @@
-import {AfterViewInit, Component} from '@angular/core';
-import {projectsFormat} from '../../models/projects';
-import {ProjectCardComponent} from '../../custom/projectcard/projectcard.component';
-import gsap, { ScrollTrigger } from 'gsap/all';
+import { AfterViewInit, Component } from '@angular/core';
+import gsap from 'gsap/all';
+import { ProjectCardComponent } from '../../custom/projectcard/projectcard.component';
+import { projectsFormat } from '../../models/projects';
 
 @Component({
   selector: 'app-projects',
@@ -49,7 +49,6 @@ export class ProjectsComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.context = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
       const timeline = gsap.timeline();
       timeline.from('#projects', {
         opacity: 0,

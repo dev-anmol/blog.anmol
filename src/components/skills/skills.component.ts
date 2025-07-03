@@ -1,5 +1,5 @@
-import {AfterViewInit, Component} from '@angular/core';
-import gsap, { ScrollTrigger } from 'gsap/all';
+import { AfterViewInit, Component } from '@angular/core';
+import gsap from 'gsap';
 
 @Component({
   selector: 'app-skills',
@@ -13,7 +13,6 @@ export class SkillsComponent implements AfterViewInit {
 
   ngAfterViewInit() : void {
     this.context = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
       const timeline = gsap.timeline();
       timeline.from('#skills', {
         opacity: 0,

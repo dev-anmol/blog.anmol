@@ -1,6 +1,6 @@
-import {AfterViewInit, Component, signal, WritableSignal} from '@angular/core';
-import {FormGroup,FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import gsap, { ScrollTrigger } from 'gsap/all';
+import { AfterViewInit, Component, signal, WritableSignal } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import gsap from 'gsap/all';
 
 @Component({
   selector: 'app-contact',
@@ -19,7 +19,6 @@ export class ContactComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     this.context = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
       const timeline = gsap.timeline();
       timeline.from('#contact', {
         opacity: 0,

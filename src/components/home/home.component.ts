@@ -1,6 +1,6 @@
 import { NgClass } from '@angular/common';
 import { AfterViewInit, Component, ElementRef, OnDestroy, signal, ViewChild } from '@angular/core';
-import gsap, { ScrollTrigger } from 'gsap/all';
+import gsap from 'gsap/all';
 import { Subscription } from 'rxjs';
 import { techFormat } from '../../models/techFormat';
 import { theme } from '../../models/theme';
@@ -95,7 +95,6 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     this.context = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
       const timeline1 = gsap.timeline();
       timeline1.from([this.desRef.nativeElement, '.contentType', '.subheading'], {
         opacity: 0,
