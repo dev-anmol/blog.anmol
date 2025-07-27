@@ -1,14 +1,13 @@
 import { NgClass } from '@angular/common';
 import { AfterViewInit, Component, OnDestroy, signal, WritableSignal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import LocomotiveScroll from 'locomotive-scroll';
+import { Router, RouterOutlet } from '@angular/router';
+import Lenis from '@studio-freight/lenis';
 import { Subscription } from 'rxjs';
 import { FooterComponent } from '../components/footer/footer.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { theme } from '../models/theme';
 import { ThemeService } from '../services/themeToggle/theme.service';
-import Lenis from '@studio-freight/lenis'
 
 
 @Component({
@@ -24,7 +23,7 @@ export class AppComponent implements AfterViewInit, OnDestroy {
   private lenis!: Lenis;
   private frameId: number = 0;
 
-  constructor(private theme: ThemeService) {
+  constructor(private theme: ThemeService, private router: Router) {
     this.subscription = this.theme.themeListener$.subscribe((value: theme) => {
       this.themeType.set(value);
     })
