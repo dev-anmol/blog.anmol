@@ -1,14 +1,15 @@
 import { NgClass } from '@angular/common';
-import { Component, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, signal, WritableSignal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import LocomotiveScroll from 'locomotive-scroll';
 import { Subscription } from 'rxjs';
 import { FooterComponent } from '../components/footer/footer.component';
 import { HeaderComponent } from '../components/header/header.component';
 import { SidebarComponent } from '../components/sidebar/sidebar.component';
 import { theme } from '../models/theme';
 import { ThemeService } from '../services/themeToggle/theme.service';
-import { gsap } from 'gsap';
-import LocomotiveScroll from 'locomotive-scroll';
+import Lenis from '@studio-freight/lenis'
+
 
 @Component({
   selector: 'app-root',
@@ -16,11 +17,12 @@ import LocomotiveScroll from 'locomotive-scroll';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent implements OnInit, OnDestroy {
+export class AppComponent implements AfterViewInit, OnDestroy {
   title = 'frontend';
   themeType: WritableSignal<theme> = signal('dark');
   private subscription!:Subscription;
-  private scroll!: LocomotiveScroll;
+  private lenis!: Lenis;
+  private frameId: number = 0;
 
   constructor(private theme: ThemeService) {
     this.subscription = this.theme.themeListener$.subscribe((value: theme) => {
@@ -28,22 +30,24 @@ export class AppComponent implements OnInit, OnDestroy {
     })
   }
 
-  ngOnInit() {
-    const initLocomotiveScroll = async () => {
-      const LocomotiveScroll = (await import('locomotive-scroll')).default;
-      this.scroll = new LocomotiveScroll();
+  ngAfterViewInit(): void {
+    this.lenis = new Lenis({
+      duration: 0.7,
+      easing: (t: number) => t * (2 - t),
+      smoothWheel: true,
+      wheelMultiplier: 1.5
+    });
+    
+
+    const animate = (time: number) => {
+      this.lenis.raf(time);
+      this.frameId = requestAnimationFrame(animate);
     }
 
-    initLocomotiveScroll();
+    this.frameId = requestAnimationFrame(animate);
   }
 
   ngOnDestroy(): void {
-      if(this.scroll) {
-        this.scroll.destroy();
-      }
+    cancelAnimationFrame(this.frameId);
   }
-
-
-
-
 }

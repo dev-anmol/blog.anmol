@@ -1,8 +1,6 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
-import {educationFormat} from '../../models/education';
-import {experienceFormat} from '../../models/experience';
-import gsap from 'gsap/all';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { AfterViewInit, Component } from '@angular/core';
+import { educationFormat } from '../../models/education';
+import { experienceFormat } from '../../models/experience';
 
 @Component({
   selector: 'app-resume',
@@ -10,7 +8,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   templateUrl: './resume.component.html',
   styleUrl: './resume.component.css'
 })
-export class ResumeComponent implements AfterViewInit {
+export class ResumeComponent {
 
   education: educationFormat[] = [{
     id: 1,
@@ -45,21 +43,7 @@ export class ResumeComponent implements AfterViewInit {
     position: 'Web Developer Intern',
     companyName: 'Solitaire Infosys Inc'
   }]
-  private context !: any;
 
-  @ViewChild('exp') educationRef !: ElementRef;
-
-  ngAfterViewInit(): void {
-    this.context = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
-      const timeline = gsap.timeline();
-      timeline.from([this.educationRef.nativeElement], {
-        opacity: 0,
-        duration: 0.5,
-        filter: 'blur(10px)',
-      })
-    })
-  }
-
+ 
 
 }

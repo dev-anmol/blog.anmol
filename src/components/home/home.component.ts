@@ -1,6 +1,5 @@
 import { NgClass } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnDestroy, signal, ViewChild } from '@angular/core';
-import gsap, { ScrollTrigger } from 'gsap/all';
+import { Component, ElementRef, signal, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { techFormat } from '../../models/techFormat';
 import { theme } from '../../models/theme';
@@ -12,7 +11,7 @@ import { ThemeService } from '../../services/themeToggle/theme.service';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
-export class HomeComponent implements AfterViewInit, OnDestroy {
+export class HomeComponent {
   techStackFirst: techFormat[] = [
     {
       id: 1,
@@ -93,18 +92,7 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
   private context!: any;
   @ViewChild('description') desRef !: ElementRef;
 
-  ngAfterViewInit(): void {
-    this.context = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
-      const timeline1 = gsap.timeline();
-      timeline1.from([this.desRef.nativeElement, '.contentType', '.subheading'], {
-        opacity: 0,
-        duration:0.5,
-        filter: 'blur(10px)',
-      });
 
-    });
-  }
 
   constructor(private theme: ThemeService) {
     this.subscription = this.theme.themeListener$.subscribe((value: theme) => {
@@ -112,7 +100,4 @@ export class HomeComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.context.revert();
-  }
 }

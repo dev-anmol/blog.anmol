@@ -1,27 +1,22 @@
+import { CommonModule } from '@angular/common';
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   OnDestroy,
-  OnInit,
   signal,
   ViewChild,
-  WritableSignal,
+  WritableSignal
 } from '@angular/core';
-import { techFormat } from '../../models/techFormat';
-import { content } from '../../models/content';
-import { CommonModule } from '@angular/common';
-import { HomeComponent } from '../home/home.component';
-import { ResumeComponent } from '../resume/resume.component';
-import { ProjectsComponent } from '../projects/projects.component';
-import { SkillsComponent } from '../skills/skills.component';
-import { ContactComponent } from '../contact/contact.component';
 import { Subscription } from 'rxjs';
-import { NavigateService } from '../../services/navigation/navigate.service';
+import { content } from '../../models/content';
 import { theme } from '../../models/theme';
+import { NavigateService } from '../../services/navigation/navigate.service';
 import { ThemeService } from '../../services/themeToggle/theme.service';
-import { gsap } from 'gsap/gsap-core';
-import { ScrollTrigger, SplitText } from 'gsap/all';
+import { ContactComponent } from '../contact/contact.component';
+import { HomeComponent } from '../home/home.component';
+import { ProjectsComponent } from '../projects/projects.component';
+import { ResumeComponent } from '../resume/resume.component';
+import { SkillsComponent } from '../skills/skills.component';
 
 @Component({
   selector: 'app-intro',
@@ -36,7 +31,7 @@ import { ScrollTrigger, SplitText } from 'gsap/all';
   templateUrl: './intro.component.html',
   styleUrl: './intro.component.css',
 })
-export class IntroComponent implements OnDestroy, AfterViewInit, OnInit {
+export class IntroComponent implements OnDestroy {
   contentType: WritableSignal<content> = signal('Home');
   email: string = 'anmolll.thakurrr@gmail.com';
   location: string = 'Dwarka, New Delhi';
@@ -45,16 +40,6 @@ export class IntroComponent implements OnDestroy, AfterViewInit, OnInit {
   private ctx!: any;
   @ViewChild('introText') introRef!: ElementRef;
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
-    this.ctx = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
-      // gsap.registerPlugin(SplitText);
-      const timeline1 = gsap.timeline();
-      timeline1.from([this.introRef.nativeElement, '.logo', '.second', '.content', '.image','.designation','.designation','.github', '.linkedin', '.x', '.insta','.location','.email'], { opacity: 0, duration: 1, filter: 'blur(10px)', stagger: 0.03 });
-    });
-  }
 
   constructor(
     private navigateToSection: NavigateService,
@@ -77,6 +62,5 @@ export class IntroComponent implements OnDestroy, AfterViewInit, OnInit {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
-    this.ctx.revert();
   }
 }

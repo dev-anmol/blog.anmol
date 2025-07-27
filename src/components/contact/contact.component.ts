@@ -1,6 +1,5 @@
-import {AfterViewInit, Component, signal, WritableSignal} from '@angular/core';
-import {FormGroup,FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
-import gsap, { ScrollTrigger } from 'gsap/all';
+import { Component, signal, WritableSignal } from '@angular/core';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
@@ -8,7 +7,7 @@ import gsap, { ScrollTrigger } from 'gsap/all';
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
-export class ContactComponent implements AfterViewInit {
+export class ContactComponent {
   email: WritableSignal<string> = signal('anmolll.thakurrr@gmail.com');
   private context !: any;
   signUpForm = new FormGroup({
@@ -16,18 +15,5 @@ export class ContactComponent implements AfterViewInit {
     message: new FormControl(),
     email: new FormControl()
   })
-
-  ngAfterViewInit(): void {
-    this.context = gsap.context(() => {
-      gsap.registerPlugin(ScrollTrigger);
-      const timeline = gsap.timeline();
-      timeline.from('#contact', {
-        opacity: 0,
-        duration: 0.5,
-        filter: 'blur(10px)',
-      })
-    })
-  }
-
 
 }
